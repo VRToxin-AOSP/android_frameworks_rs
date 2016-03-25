@@ -35,9 +35,8 @@ FifoSocket::~FifoSocket() {
 
 }
 
-bool FifoSocket::init(bool supportNonBlocking, bool supportReturnValues, size_t maxDataSize) {
-    int ret = socketpair(AF_UNIX, SOCK_STREAM, 0, sv);
-    return false;
+void FifoSocket::init(bool supportNonBlocking, bool supportReturnValues, size_t maxDataSize) {
+    socketpair(AF_UNIX, SOCK_STREAM, 0, sv);
 }
 
 void FifoSocket::shutdown() {
@@ -99,10 +98,7 @@ bool FifoSocket::isEmpty() {
 
 
 void FifoSocket::readReturn(const void *data, size_t bytes) {
-    //ALOGE("readReturn %p %Zu", data, bytes);
-    size_t ret = ::send(sv[1], data, bytes, 0);
-    //ALOGE("readReturn %Zu", ret);
-    //rsAssert(ret == bytes);
+    ::send(sv[1], data, bytes, 0);
 }
 
 

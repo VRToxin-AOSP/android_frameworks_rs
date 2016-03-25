@@ -29,7 +29,7 @@ public:
     FifoSocket();
     virtual ~FifoSocket();
 
-    bool init(bool supportNonBlocking = true,
+    void init(bool supportNonBlocking = true,
               bool supportReturnValues = true,
               size_t maxDataSize = 0);
     void shutdown();
