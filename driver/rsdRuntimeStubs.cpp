@@ -211,8 +211,7 @@ void __attribute__((overloadable)) rsAllocationCopy2DRange(
         return src.p != nullptr; \
     } \
     void __attribute__((overloadable)) rsClearObject(t *dst) { \
-        Context *rsc = RsdCpuReference::getTlsContext(); \
-        rsrClearObject(rsc, reinterpret_cast<rs_object_base *>(dst)); \
+        rsrClearObject(reinterpret_cast<rs_object_base *>(dst)); \
     } \
     void __attribute__((overloadable)) rsSetObject(t *dst, t src) { \
         Context *rsc = RsdCpuReference::getTlsContext(); \
